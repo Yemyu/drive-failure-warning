@@ -1,0 +1,28 @@
+scope=notebook-reading-public-dashboard-build-and-synthetic-replay
+recommended_python=3.13
+reference_python=3.13.14
+reference_IPython=9.15.0
+reference_jupyterlab=4.6.1
+reference_ipykernel=7.3.0
+reference_nbformat=5.10.4
+reference_nbclient=0.11.0
+dependency_spec=environment/requirements.txt
+notebook_code_dependencies=python-standard-library,IPython
+notebook_launch_dependencies=jupyterlab,ipykernel
+notebook_validation_dependencies=nbformat,nbclient
+public_dashboard_build_dependencies=python-standard-library
+small_replay_dependencies=python-standard-library,numpy,scikit-learn
+small_replay_dependency_spec=environment/requirements-replay.txt
+small_replay_platform_scope=macOS,Linux-POSIX
+# Reference package versions observed in the existing isolated environment.
+# This is not a complete lock of the historical model-training environment.
+
+# Fresh project-local environment validation on macOS (2026-10-06).
+clean_IPython=9.17.1
+clean_jupyterlab=4.6.4
+clean_ipykernel=7.4.0
+clean_nbformat=5.11.1
+clean_nbclient=0.11.0
+clean_numpy=2.5.3
+clean_scikit_learn=1.9.1
+clean_validation=both-notebooks-run-all,public-page-build,14-public-and-replay-tests,synthetic-cli

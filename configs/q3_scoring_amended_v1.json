@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "stage": 43,
+  "experiment": "E2-R",
+  "status": "design_locked_not_executed",
+  "permission": "conditional_amended_q3_scoring_and_evaluation_after_new_entry_acceptance",
+  "original_E2_status": "stopped_smart_continuity_gate",
+  "interpretation": "exploratory_temporal_validation_after_covariate_informed_protocol_amendment",
+  "decline_policy": "retain_observed_raw_and_existing_signed_formulas_audit_only",
+  "fit_allowed": false,
+  "q4_access": false,
+  "remote_setup": false,
+  "model_adoption_allowed": false,
+  "scoring_allowed_after_acceptance": true,
+  "frozen_paths": {
+    "q3": "data/derived/q3_validation_v1/panel_q3.sqlite",
+    "prior": "data/derived/panel_q1q2_verified_v1.sqlite",
+    "model": "data/derived/simple_baseline_v2/model_results.sqlite",
+    "zip": "data/raw/q3_validation_v1/attempt_001/data_Q3_2023.zip"
+  },
+  "frozen_sha256": {
+    "q3": "5905dd3b9156f2fb29f07d1d2d2e70c3040337bdae5f290cb69fd73e4f7c84b5",
+    "prior": "294062e4ebf5bb8c95ef61cc5d57a114f65c6954b803f0f327f9aa3c9652dfa2",
+    "model": "f112323774527887686a6471296af036415e45e751416f4a2e4a3574cf16d3c4",
+    "zip": "340666d789b7f5941a4389b53ff9a795af92f4ccf2e65ab0e1752c741230d8f6"
+  },
+  "bindings": {
+    "evidence/research_archive/20261006/configs/q3_validation_v1.json": "95b7aa7798e2be5e8ab90e401465e0cb794424d1178460aef5898f65362feb85",
+    "reports/Q3_VALIDATION_CONTRACT.md": "3b6c99fa5b1a9cb5d746a31dc40ed38fe03bccdac983550d2cfc16a225353631",
+    "reports/Q3_SMART_DECISION_AND_SCORING_CONTRACT.md": "7d6ebac376627f71f6ada8833b1f7d3262b4bff808eae54fbfeccf9cf3206184",
+    "evidence/q3/source_review_v1/review.json": "29ac8ab3b05363972944704c1c2281658b6a2ddf6f28cf7bb1b772db63c9de58",
+    "evidence/q3/source_review_v1/anomaly_source_check.json": "0f34ee8df09d1981321c8d26c8eb284d20760a2841f68627295a2118243ea943",
+    "evidence/q3/smart_decision_v1/local_diagnosis.json": "ce2974c2cde4fff7da9fa74783ee036939ef8724fff891170ee4385a15dcd2fc",
+    "pipeline/build_feature_replay.py": "82e78b9da37c10cdd2f8e6114d7b1e89cd2f635e8f8ab2c27ea0c39b02c4151a",
+    "evidence/research_archive/20261006/configs/simple_baseline_v2.json": "b6104dc91113150ce27ebf5ea4668ba28e9e66bb72a95e64d886ebb9d8b7526b"
+  },
+  "scope": {
+    "model": "ST4000DM000",
+    "history_days": 14,
+    "minimum_history_observations": 12,
+    "horizon_days": 7,
+    "score_dates": [
+      "2023-07-01",
+      "2023-09-23"
+    ],
+    "label_cutoff": "2023-09-30",
+    "event_dates": [
+      "2023-07-08",
+      "2023-09-24"
+    ],
+    "label_run_id": "validation_q3_h7_v1",
+    "split": "validation",
+    "planned_validation": {
+      "methods": [
+        "random",
+        "smart_nonzero",
+        "smart187",
+        "age_lr",
+        "current_lr",
+        "history_lr"
+      ],
+      "budget_denominator": 1000,
+      "cooldown_days": 7,
+      "cooldown_reset": "2023-07-01",
+      "tie_break_prefix": "drive-v1|20260912",
+      "bootstrap_seed": 20260913,
+      "bootstrap_replicates": 2000,
+      "bootstrap_min_valid": 1900,
+      "bootstrap_rng": "numpy.random.Generator(PCG64)",
+      "bootstrap_device_order": "UTF-8 serial ascending",
+      "minimum_opportunity_events": 100,
+      "history_vs_current_min_recall_gain": 0.05,
+      "paired_interval_lower_bound_strictly_above": 0.0,
+      "maximum_unknown_alert_ratio_increase": 0.02
+    }
+  },
+  "reviewed_transitions": [
+    {
+      "serial": "Z3015JCM",
+      "field": "smart_9_raw",
+      "previous_date": "2023-08-07",
+      "previous": 78150,
+      "date": "2023-08-08",
+      "value": 4
+    },
+    {
+      "serial": "Z302BV6W",
+      "field": "smart_5_raw",
+      "previous_date": "2023-07-19",
+      "previous": 53408,
+      "date": "2023-07-20",
+      "value": 2048
+    },
+    {
+      "serial": "Z3055M0V",
+      "field": "smart_5_raw",
+      "previous_date": "2023-08-20",
+      "previous": 50896,
+      "date": "2023-08-21",
+      "value": 24016
+    }
+  ],
+  "resources": {
+    "workers": 1,
+    "numerical_threads": 1,
+    "rss_limit_bytes": 2147483648,
+    "new_project_bytes_limit": 4294967296,
+    "minimum_free_bytes": 2147483648,
+    "stage_seconds": 7200,
+    "network_downloads": 0
+  },
+  "output_roots": [
+    "data/derived/q3_scoring_amended_v1",
+    "evidence/q3/scoring_amended_v1",
+    ".tmp/q3_scoring_amended_v1"
+  ],
+  "expected_eligible_rows": 1497209,
+  "expected_events": 126,
+  "expected_opportunities": 126
+}

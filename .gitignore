@@ -1,0 +1,83 @@
+# Local data and immutable run evidence are intentionally kept outside the curated repo.
+data/
+evidence/
+handoff/runs/
+
+# Local environments and generated files.
+.conda/
+.conda_pkgs/
+.venv/
+.cache/
+.tmp/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Local database and staging files.
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+*.staging
+
+# Notebook and local tool state.
+.ipynb_checkpoints/
+.mypy_cache/
+.pytest_cache/
+
+# OS/editor files.
+.vscode/
+.idea/
+
+# Secrets and local credentials.
+.env
+.env.*
+!.env.example
+
+# Internal coordination and historical review material are not part of the curated project repo.
+AGENTS.md
+HANDOFF.md
+PROJECT_CONTEXT.md
+LEARNING_PROFILE.md
+docs/learning/
+handoff/
+investigation/
+
+# Only the presentation guides belong in the published documentation directory.
+docs/*
+!docs/DEMO_GUIDE.md
+!docs/DEMO_GUIDE_EN.md
+doc/
+
+# Public research summaries; local review and application drafts remain private.
+PROJECT_BRIEF.md
+reports/*
+!reports/CURRENT_RESEARCH_CONCLUSIONS.md
+!reports/Q3_RESEARCH_RESULT_BRIEF.md
+!reports/R_VALIDATION_RESULTS.md
+!reports/ML_EVALUATION_DIAGNOSTICS.md
+!reports/RESULTS_OVERVIEW.md
+!reports/RESULTS_OVERVIEW_EN.md
+!reports/METHODS.md
+!reports/METHODS_EN.md
+!reports/ALERT_CAPACITY_REVIEW.md
+!reports/ALERT_REPEAT_ANALYSIS.md
+!reports/data/
+!reports/data/**
+!reports/figures/
+!reports/figures/**
+
+# Superseded presentation exports are retained locally, outside the public tree.
+dashboard/project_v3/
+dashboard/tabler_v1/
+dashboard/tabler_v2/
+dashboard/template.html
+dashboard/template_project.html
+dashboard/template_tabler.html
+dashboard/template_tabler_q4.html
+dashboard/vendor/threeui/
+tools/build_dashboard.py
+tools/build_project_dashboard.py
+tests/test_dashboard.py

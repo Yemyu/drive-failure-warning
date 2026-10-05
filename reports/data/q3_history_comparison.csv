@@ -1,0 +1,2 @@
+comparison,point_difference_pp,ci95_lower_pp,ci95_upper_pp,bootstrap_replicates,seed
+history_lr minus current_lr,5.5555555555555465,-0.7874015748031485,11.382113821138212,2000,20260913

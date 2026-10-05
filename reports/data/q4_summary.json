@@ -1,0 +1,176 @@
+{
+  "status": "verified_complete",
+  "period": "2023 Q4",
+  "model": "ST4000DM000",
+  "scoring_dates": [
+    "2023-10-01",
+    "2023-12-24"
+  ],
+  "main_event_dates": [
+    "2023-10-08",
+    "2023-12-25"
+  ],
+  "outcome_cutoff": "2023-12-31",
+  "raw_source_rows": 24790999,
+  "main_model_rows": 1295929,
+  "raw_days": 92,
+  "daily_observed_min": 11392,
+  "daily_observed_max": 15976,
+  "eligible_device_days": 1216041,
+  "eligible_devices": 15976,
+  "opportunity_events": 86,
+  "delta_recall_pp": 5.813953488372093,
+  "event_overlap": {
+    "both": 29,
+    "current_only": 11,
+    "smart_only": 6,
+    "neither": 40
+  },
+  "quality_gate": {
+    "scope": "common_eligible_scoring_rows",
+    "eligible_rows": 1216041,
+    "unknown_rows": 31684,
+    "unknown_ratio": 0.026055042552019216,
+    "unknown_ratio_max": 0.2,
+    "status": "pass"
+  },
+  "interval_publication": {
+    "status": "withheld",
+    "interval_pp": null,
+    "blocking_reasons": [
+      "insufficient_events"
+    ]
+  },
+  "gain_evidence": {
+    "complete_acceptance": "passed",
+    "numerical_conditions_met": false,
+    "support_gain": false,
+    "final_interpretation": "descriptive_only_insufficient_events"
+  },
+  "gain_conditions": {
+    "minimum_events": false,
+    "minimum_valid_replicates": true,
+    "delta_at_least_5pp": true,
+    "interval_lower_above_zero": null,
+    "unknown_increase_at_most_2pp": true,
+    "quality_passed": true
+  },
+  "valid_bootstrap_replicates": 2000,
+  "methods": {
+    "current_lr": {
+      "alerts": 1247,
+      "known_hit_alerts": 43,
+      "known_no_hit_alerts": 1166,
+      "unknown_alerts": 38,
+      "unknown_alert_ratio": 0.030473135525260625,
+      "event_hits": 40,
+      "event_opportunity_total": 86,
+      "event_recall_at_opportunity": 0.46511627906976744,
+      "lead_statistics": {
+        "count": 40,
+        "median": 3.0,
+        "q25": 2.0,
+        "q75": 6.0
+      },
+      "precision": {
+        "lower": 0.034482758620689655,
+        "upper": 0.06495589414595028,
+        "known_outcome": 0.03556658395368073
+      },
+      "lead_recall": {
+        "opportunity_events": 86,
+        "ge2_hits": 35,
+        "ge3_hits": 25,
+        "ge2_recall": 0.4069767441860465,
+        "ge3_recall": 0.29069767441860467
+      },
+      "average_precision_known": {
+        "scope": "all_eligible_scoring_rows_known_labels",
+        "known_rows": 1184357,
+        "positive_rows": 609,
+        "unknown_rows": 31684,
+        "value": 0.08250291633288892
+      },
+      "burden": {
+        "eligible_device_days": 1216041,
+        "alerts": 1247,
+        "alerted_devices": 205,
+        "first_alerts": 205,
+        "later_alerts": 1042,
+        "repeat_alert_devices": 180,
+        "alerts_per_1000_device_days": 1.0254588455487932,
+        "confirmed_no_hit_per_1000_device_days": 0.9588492493262973
+      },
+      "outside_main_event_alert_count": 3
+    },
+    "smart_nonzero": {
+      "alerts": 1247,
+      "known_hit_alerts": 37,
+      "known_no_hit_alerts": 1183,
+      "unknown_alerts": 27,
+      "unknown_alert_ratio": 0.02165196471531676,
+      "event_hits": 35,
+      "event_opportunity_total": 86,
+      "event_recall_at_opportunity": 0.4069767441860465,
+      "lead_statistics": {
+        "count": 35,
+        "median": 2.0,
+        "q25": 1.0,
+        "q75": 4.5
+      },
+      "precision": {
+        "lower": 0.02967121090617482,
+        "upper": 0.05132317562149158,
+        "known_outcome": 0.030327868852459017
+      },
+      "lead_recall": {
+        "opportunity_events": 86,
+        "ge2_hits": 22,
+        "ge3_hits": 17,
+        "ge2_recall": 0.2558139534883721,
+        "ge3_recall": 0.19767441860465115
+      },
+      "average_precision_known": {
+        "scope": "all_eligible_scoring_rows_known_labels",
+        "known_rows": 1184357,
+        "positive_rows": 609,
+        "unknown_rows": 31684,
+        "value": 0.016144613491173528
+      },
+      "burden": {
+        "eligible_device_days": 1216041,
+        "alerts": 1247,
+        "alerted_devices": 389,
+        "first_alerts": 389,
+        "later_alerts": 858,
+        "repeat_alert_devices": 238,
+        "alerts_per_1000_device_days": 1.0254588455487932,
+        "confirmed_no_hit_per_1000_device_days": 0.9728290411260805
+      },
+      "outside_main_event_alert_count": 2
+    }
+  },
+  "smart_decreases": 1,
+  "real_fit": 0,
+  "execution": {
+    "resource_peak": {
+      "rss_bytes": 1126121472,
+      "elapsed_seconds": 2038.381
+    },
+    "independent_verifier": "pass",
+    "verified_artifacts": 98
+  },
+  "evidence": {
+    "manifest_hash": "181fc9b7e93e2c8e99df0b3305ce21acad2db8553bc764bc1fed0df70ef41a4f",
+    "evaluation_sha256": "e91cb9437769a71f58110341b71211d81176adad602f43f0150fabeca520a046",
+    "selection_sha256": "249605f0fabea5b2b29b52f835b5083732b4fe9637e07db019097f93bbd8e0db",
+    "source_sha256": "57bc4b5a981a6500362e074e8ded121b31154b6dce51e0f2f21dab9d2b854164"
+  },
+  "limitations": [
+    "86 opportunities below the prespecified 100-event confirmation gate; no confirmatory interval",
+    "single model and quarter; devices may overlap training",
+    "public failure marker rather than confirmed mechanical cause",
+    "unknown outcomes retained; no intervention/cost evidence",
+    "directory adapter corrected before any CSV rows were opened"
+  ]
+}

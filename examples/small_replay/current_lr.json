@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "model": "current_lr",
+  "model_run_status": "reused_v1",
+  "feature_count": 16,
+  "intercept": -8.312916413119973,
+  "source_database": "data/derived/simple_baseline_v2/model_results.sqlite",
+  "source_database_sha256": "f112323774527887686a6471296af036415e45e751416f4a2e4a3574cf16d3c4",
+  "features": [
+    {
+      "position": 0,
+      "feature_name": "smart_5_current_log1p",
+      "source_name": "smart_5_current_log1p",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.05399144310843879,
+      "standardization_mean": 0.05399144310843879,
+      "standardization_scale": 0.494342105820438,
+      "observed_count": 138513,
+      "coefficient": 0.09018034170547576
+    },
+    {
+      "position": 1,
+      "feature_name": "smart_5_current_missing",
+      "source_name": "smart_5_current_missing",
+      "is_missing_indicator": 1,
+      "imputation_mean": 5.162299659178804e-05,
+      "standardization_mean": 5.162299659178804e-05,
+      "standardization_scale": 0.00718472905947127,
+      "observed_count": 138521,
+      "coefficient": 0.004028750701996039
+    },
+    {
+      "position": 2,
+      "feature_name": "smart_5_current_nonzero",
+      "source_name": "smart_5_current_nonzero",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.01528222454200525,
+      "standardization_mean": 0.015282224542005252,
+      "standardization_scale": 0.12266988749155952,
+      "observed_count": 138513,
+      "coefficient": -0.05732604903284974
+    },
+    {
+      "position": 3,
+      "feature_name": "smart_9_current_log1p",
+      "source_name": "smart_9_current_log1p",
+      "is_missing_indicator": 0,
+      "imputation_mean": 11.078439479207912,
+      "standardization_mean": 11.078439479207912,
+      "standardization_scale": 0.08548876784730078,
+      "observed_count": 138513,
+      "coefficient": 0.05710386724848602
+    },
+    {
+      "position": 4,
+      "feature_name": "smart_9_current_missing",
+      "source_name": "smart_9_current_missing",
+      "is_missing_indicator": 1,
+      "imputation_mean": 5.162299659178804e-05,
+      "standardization_mean": 5.162299659178804e-05,
+      "standardization_scale": 0.00718472905947127,
+      "observed_count": 138521,
+      "coefficient": 0.004028750701996039
+    },
+    {
+      "position": 5,
+      "feature_name": "smart_187_current_log1p",
+      "source_name": "smart_187_current_log1p",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.14508617069127325,
+      "standardization_mean": 0.14508617069127325,
+      "standardization_scale": 0.5439223282935328,
+      "observed_count": 138513,
+      "coefficient": 0.49536417616112477
+    },
+    {
+      "position": 6,
+      "feature_name": "smart_187_current_missing",
+      "source_name": "smart_187_current_missing",
+      "is_missing_indicator": 1,
+      "imputation_mean": 5.162299659178804e-05,
+      "standardization_mean": 5.162299659178804e-05,
+      "standardization_scale": 0.00718472905947127,
+      "observed_count": 138521,
+      "coefficient": 0.004028750701996039
+    },
+    {
+      "position": 7,
+      "feature_name": "smart_187_current_nonzero",
+      "source_name": "smart_187_current_nonzero",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.08089056033633145,
+      "standardization_mean": 0.08089056033633145,
+      "standardization_scale": 0.2726599339021933,
+      "observed_count": 138513,
+      "coefficient": 0.2199094579008717
+    },
+    {
+      "position": 8,
+      "feature_name": "smart_188_current_nonzero",
+      "source_name": "smart_188_current_nonzero",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.01357039229034661,
+      "standardization_mean": 0.013570392290346612,
+      "standardization_scale": 0.1156959191405597,
+      "observed_count": 138513,
+      "coefficient": 0.05184544309163755
+    },
+    {
+      "position": 9,
+      "feature_name": "smart_188_current_missing",
+      "source_name": "smart_188_current_missing",
+      "is_missing_indicator": 1,
+      "imputation_mean": 5.162299659178804e-05,
+      "standardization_mean": 5.162299659178804e-05,
+      "standardization_scale": 0.00718472905947127,
+      "observed_count": 138521,
+      "coefficient": 0.004028750701996039
+    },
+    {
+      "position": 10,
+      "feature_name": "smart_197_current_log1p",
+      "source_name": "smart_197_current_log1p",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.07106134809381566,
+      "standardization_mean": 0.07106134809381565,
+      "standardization_scale": 0.44381650619516766,
+      "observed_count": 138513,
+      "coefficient": 0.13645596632024815
+    },
+    {
+      "position": 11,
+      "feature_name": "smart_197_current_missing",
+      "source_name": "smart_197_current_missing",
+      "is_missing_indicator": 1,
+      "imputation_mean": 5.162299659178804e-05,
+      "standardization_mean": 5.162299659178804e-05,
+      "standardization_scale": 0.00718472905947127,
+      "observed_count": 138521,
+      "coefficient": 0.004028750701996039
+    },
+    {
+      "position": 12,
+      "feature_name": "smart_197_current_nonzero",
+      "source_name": "smart_197_current_nonzero",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.026702491477984213,
+      "standardization_mean": 0.026702491477984213,
+      "standardization_scale": 0.16120833344654478,
+      "observed_count": 138513,
+      "coefficient": -0.07924031974194781
+    },
+    {
+      "position": 13,
+      "feature_name": "smart_198_current_log1p",
+      "source_name": "smart_198_current_log1p",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.07106134809381566,
+      "standardization_mean": 0.07106134809381565,
+      "standardization_scale": 0.44381650619516766,
+      "observed_count": 138513,
+      "coefficient": 0.13645596632024815
+    },
+    {
+      "position": 14,
+      "feature_name": "smart_198_current_missing",
+      "source_name": "smart_198_current_missing",
+      "is_missing_indicator": 1,
+      "imputation_mean": 5.162299659178804e-05,
+      "standardization_mean": 5.162299659178804e-05,
+      "standardization_scale": 0.00718472905947127,
+      "observed_count": 138521,
+      "coefficient": 0.004028750701996039
+    },
+    {
+      "position": 15,
+      "feature_name": "smart_198_current_nonzero",
+      "source_name": "smart_198_current_nonzero",
+      "is_missing_indicator": 0,
+      "imputation_mean": 0.026702491477984213,
+      "standardization_mean": 0.026702491477984213,
+      "standardization_scale": 0.16120833344654478,
+      "observed_count": 138513,
+      "coefficient": -0.07924031974194781
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "package": "@tabler/core",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": "https://github.com/tabler/tabler",
+  "source_package_url": "https://registry.npmjs.org/@tabler/core/-/core-1.0.0.tgz",
+  "source_package_sha256": "961c35dfacae28bff16a63604754dfac640d74694636a7dfe8642602d86a1f30",
+  "retrieved_at": "2026-10-03",
+  "assets": [
+    {
+      "path": "tabler.min.css",
+      "package_path": "dist/css/tabler.min.css",
+      "bytes": 553865,
+      "sha256": "68efb8668c8d3d91c27b16dba6b0d853d2c2c6c86ab33400d1220d1587e8b373",
+      "modified": false
+    },
+    {
+      "path": "LICENSE",
+      "package_path": "LICENSE",
+      "bytes": 1090,
+      "sha256": "ef5d45031adce79eeaf17f04a966871137589f9b60d18e4520ade84b291dcd05",
+      "modified": false
+    }
+  ],
+  "dependency_scan": {
+    "import_rules": 0,
+    "font_face_rules": 0,
+    "url_references": 35,
+    "non_data_url_references": []
+  },
+  "javascript_included": false
+}

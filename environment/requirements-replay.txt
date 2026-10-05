@@ -1,0 +1,4 @@
+# Additional imports needed by the existing POSIX replay package.
+# The example uses frozen parameters and performs no fitting.
+numpy>=2.5,<3
+scikit-learn>=1.9,<2

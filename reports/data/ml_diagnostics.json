@@ -1,0 +1,50 @@
+{
+  "source": "reports/ML_EVALUATION_DIAGNOSTICS.md; reports/R_VALIDATION_RESULTS.md",
+  "q3": {
+    "current_lr": {
+      "alerts": 1509,
+      "event_hits": 65,
+      "opportunities": 126,
+      "event_recall": 0.5158730159,
+      "ap": 0.1191322536,
+      "alerted_devices": 226,
+      "later_alerts": 1283,
+      "known_hit_rate": 0.04406
+    },
+    "smart_nonzero": {
+      "alerts": 1509,
+      "event_hits": 47,
+      "opportunities": 126,
+      "event_recall": 0.373015873,
+      "ap": 0.0232600844,
+      "alerted_devices": 464,
+      "later_alerts": 1045,
+      "known_hit_rate": 0.03198
+    }
+  },
+  "q4": {
+    "current_lr": {
+      "alerts": 1247,
+      "event_hits": 40,
+      "opportunities": 86,
+      "event_recall": 0.4651162791,
+      "ap": 0.0825029163,
+      "alerted_devices": 205,
+      "later_alerts": 1042,
+      "known_hit_rate": 0.03557,
+      "brier": 0.0005437449,
+      "constant_brier": 0.0005139387,
+      "predicted_observed_positive_days": 1.807
+    },
+    "smart_nonzero": {
+      "alerts": 1247,
+      "event_hits": 35,
+      "opportunities": 86,
+      "event_recall": 0.4069767442,
+      "ap": 0.0161446135,
+      "alerted_devices": 389,
+      "later_alerts": 858,
+      "known_hit_rate": 0.03033
+    }
+  }
+}

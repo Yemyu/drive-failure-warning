@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "scope": "small_replay_fixture_v1",
+  "plan": "frozen current_lr scoring with smart_nonzero rule on synthetic daily records",
+  "sha256": {
+    "daily": "3ddd8a450d1038de265587537a06ae9487e5d744ed364cd157dc74503ad03966",
+    "model": "ce2a7350b39e8760175c390512259fc418a79db9c5340e5617205481ef6111cf",
+    "expected": "03499be62e3743cebd437eed93aec5c84aa85b7e2953e7ab5e369f2dd3f2c63d"
+  },
+  "code_sha256": {
+    "run_small_replay": "f42f8a6844258ea8b86e2a0d9610742255c158a7c547f048f17089588e731469",
+    "build_feature_replay": "d83028c4b6b36d2a134f592f8822a8e50d486e412eae159b7029b0711338d9af",
+    "labeling": "d6f17c746492aeaae52b13b28c018e57dd885f6c62afce95a91f979a4d138b68",
+    "replay_selection": "9117b005da59b06d476a292bafc63e24823cbb5f0e598a96b28382a65a534899"
+  },
+  "scope_values": {
+    "serial_count": 12,
+    "date_start": "2023-01-01",
+    "date_end": "2023-02-04",
+    "decision_start": "2023-01-15",
+    "decision_end": "2023-01-28",
+    "event_start": "2023-01-22",
+    "event_end": "2023-01-29",
+    "horizon_days": 7,
+    "history_days": 14,
+    "min_history": 12,
+    "budget_denominator": 1000,
+    "cooldown_days": 7
+  }
+}

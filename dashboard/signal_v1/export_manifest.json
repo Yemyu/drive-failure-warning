@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "scope": "Static presentation build from committed Q3/Q4 results; no training, scoring or raw data access",
+  "source_manifest_sha256": "a3a02f9ec298878002bcdc2b23fa95a375c3ca2000fa3cea7f78c61813bf76e5",
+  "sources": {
+    "dashboard/signal_v1/data.json": "2e18ea2a4fa8dfb3e7ac5b59c930ec2e89bdf9477d97f06db0f7a946a84b3a13"
+  },
+  "template_sha256": "71e4447cf533d04c2e1c7af874d1f2b658c5e7a1cacf6795a58ff6e9efb7445c",
+  "outputs": {
+    "index.html": "230eb3e2a2b1206f18e16e42fbbbeb94af5f9df6bb6b0c5264ac7e8dd0b75dcc"
+  },
+  "tabler": {
+    "version": "1.0.0",
+    "stylesheet_sha256": "68efb8668c8d3d91c27b16dba6b0d853d2c2c6c86ab33400d1220d1587e8b373",
+    "asset_manifest_sha256": "1ffe03686dc18a217107876ebd49384bc81510a9b8b7df0681bda9ca187aaf03"
+  }
+}

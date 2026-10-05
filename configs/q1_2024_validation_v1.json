@@ -1,0 +1,114 @@
+{
+  "version": "q1_2024_validation_v1",
+  "protocol": "Q1-2024.1",
+  "protocol_source": "evidence/protocols/q1_2024_validation_v1.md",
+  "model": "ST4000DM000",
+  "methods": {
+    "primary": "current_lr",
+    "comparison": "smart_nonzero",
+    "excluded": ["history_lr", "history_hgb_v1", "age_lr", "random", "smart187"],
+    "candidate_search": false
+  },
+  "dates": {
+    "quarter_raw": ["2024-01-01", "2024-03-31"],
+    "quarter_days": 91,
+    "score_start": "2024-01-01",
+    "score_end": "2024-03-24",
+    "score_days": 84,
+    "event_start": "2024-01-08",
+    "event_end": "2024-03-25",
+    "outcome_cutoff": "2024-03-31",
+    "bridge_history_start": "2023-12-19",
+    "bridge_history_end": "2023-12-31",
+    "bridge_extra_past_state": "2023-12-18",
+    "needs_q2_data": false,
+    "leap_day": "2024-02-29"
+  },
+  "identity": {
+    "key": "serial_number",
+    "cross_source_model_conflict": "stop",
+    "revival_forbidden": true,
+    "new_devices_allowed": true
+  },
+  "labels": {
+    "horizon_days": 7,
+    "positive_with_gap": true,
+    "unknown_on_incomplete_followup": true,
+    "selection_closed_before_evaluation": true
+  },
+  "capacity": {"rule": "ceil(N_t / 1000)", "zero_is_zero": true},
+  "cooldown": {"days": 7, "initial_state": "empty_on_2024-01-01", "tie_prefix": "drive-v1|20260912"},
+  "smart_rule": {"fields": [5, 187, 188, 197, 198], "positive_raw_only": true, "null_is_not_positive": true},
+  "model_binding": {
+    "source_database": "data/derived/simple_baseline_v2/model_results.sqlite",
+    "source_database_sha256": "f112323774527887686a6471296af036415e45e751416f4a2e4a3574cf16d3c4",
+    "full_parameters": "examples/small_replay/current_lr.json",
+    "full_parameters_sha256": "ce2a7350b39e8760175c390512259fc418a79db9c5340e5617205481ef6111cf",
+    "model_run_status": "reused_v1",
+    "feature_count": 16,
+    "approval": "逐字段核对冻结 current_lr 参数；不调用 fit"
+  },
+  "history": {
+    "roles": ["q1q2_panel", "q3_panel", "q4_candidate_panel"],
+    "must_not_use": ["q4_prepared_panel", "q4_duplicate_panel"],
+    "window_days": 14,
+    "min_observations": 12,
+    "include_prior_failures": true,
+    "daily_bridge": ["2023-12-19", "2023-12-31"]
+  },
+  "opportunity": {
+    "definition": "2023-01-01起观察到的首次公开failure，落在主事件区间且故障前1—7日有共同合格评分日",
+    "independent_of_alerts": true,
+    "main_event_excludes": ["2024-03-26", "2024-03-27", "2024-03-28", "2024-03-29", "2024-03-30", "2024-03-31"]
+  },
+  "quality_gate": {"unknown_ratio_max": 0.2, "action": "preserve_and_mark_data_quality_failed"},
+  "bootstrap": {
+    "method": "device_level_paired_with_replacement",
+    "seed": 20260913,
+    "replicates": 2000,
+    "min_valid_replicates": 1900,
+    "direction": "current_minus_smart",
+    "minimum_events_for_interval": 100
+  },
+  "evidence_gates": {
+    "insufficient_events_below": 100,
+    "support_gain_delta_pp": 5,
+    "support_gain_lower_bound_pp": 0,
+    "unknown_alert_ratio_worsening_pp": 2,
+    "no_q2_extension": true
+  },
+  "source_zip": {
+    "url": "https://f001.backblazeb2.com/file/Backblaze-Hard-Drive-Data/data_Q1_2024.zip",
+    "content_length": 1006502769,
+    "bz_file_id": "4_zefbb636e885eab02543a061a_f203ecff4611d9135_d20240429_m171914_c001_v0001036_t0039_u01714411154500",
+    "content_sha1": "none",
+    "accept_ranges": "bytes",
+    "official_page": "https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data",
+    "prefix": "data_Q1_2024",
+    "metadata_budget_bytes": 16777216
+  },
+  "budget": {
+    "process_rss_bytes": 3221225472,
+    "numeric_threads": 1,
+    "sampling_seconds": 0.2,
+    "retention_bytes": 12884901888,
+    "min_free_at_start_bytes": 15032385536,
+    "min_free_running_bytes": 2147483648,
+    "download_attempts": 1,
+    "download_timeout_seconds": 1800,
+    "download_max_body_bytes": 1395864371,
+    "unzip_total_bytes": 12884901888,
+    "unzip_per_member_bytes": 268435456,
+    "real_chain_total_seconds": 10800
+  },
+  "paths": {
+    "raw": "data/raw/q1_2024_validation_v1",
+    "evidence": "evidence/q1_2024_validation_v1",
+    "release": "evidence/q1_2024_validation_v1/release.json"
+  },
+  "release_gate": {
+    "required_for_real_run": true,
+    "r0_lock_schema": "q1-lock-v1",
+    "allowed_stages": ["panel", "score", "evaluate", "audit"]
+  }
+}

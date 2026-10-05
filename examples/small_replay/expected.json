@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "scope": "manual_boundary_expectations",
+  "decision_checks": [
+    {"serial_number": "demo-A", "date": "2023-01-15", "status": "negative_observed", "label": 0},
+    {"serial_number": "demo-A", "date": "2023-01-17", "status": "positive_observed", "label": 1},
+    {"serial_number": "demo-B", "date": "2023-01-21", "status": "positive_observed", "label": 1},
+    {"serial_number": "demo-C", "date": "2023-01-15", "status": "positive_observed", "label": 1},
+    {"serial_number": "demo-D", "date": "2023-01-15", "status": "gap_or_exit_censored", "label": null},
+    {"serial_number": "demo-E", "date": "2023-01-15", "status": "gap_or_exit_censored", "label": null},
+    {"serial_number": "demo-F", "date": "2023-01-15", "status": "negative_observed", "label": 0},
+    {"serial_number": "demo-G", "date": "2023-01-15", "status": "history_insufficient", "label": null},
+    {"serial_number": "demo-G", "date": "2023-01-21", "status": "negative_observed", "label": 0},
+    {"serial_number": "demo-H", "date": "2023-01-15", "status": "post_failure", "label": null}
+  ],
+  "feature_checks": [
+    {"serial_number": "demo-F", "date": "2023-01-15", "values": {
+      "smart_5_current_missing": 1,
+      "smart_9_current_missing": 1,
+      "smart_187_current_missing": 1,
+      "smart_188_current_missing": 1,
+      "smart_197_current_missing": 1,
+      "smart_198_current_missing": 1
+    }},
+    {"serial_number": "demo-J", "date": "2023-01-19", "values": {
+      "smart_197_current_nonzero": 0
+    }}
+  ],
+  "score_checks": [
+    {"serial_number": "demo-F", "date": "2023-01-15", "score": -4.948662012599481}
+  ],
+  "main_event_serials": ["demo-A", "demo-B"]
+}

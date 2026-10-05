@@ -1,0 +1,174 @@
+{
+  "version": "r_validation_v1",
+  "protocol": "R1.0",
+  "protocol_source": "evidence/protocols/r_validation_v1.md",
+  "method_note": "唯一方法依据 evidence/protocols/r_validation_v1.md；本配置为精确转录，不得含协议外字段值",
+  "model": "ST4000DM000",
+  "methods": {
+    "primary": "current_lr",
+    "comparison": "smart_nonzero",
+    "excluded": ["history_lr", "history_hgb_v1", "age_lr", "random", "smart187"],
+    "exclusion_reason": "PLAN R1.0：只比较 current_lr 与 smart_nonzero；树未晋级不参与；history_lr 不加参考跑"
+  },
+  "model_binding": {
+    "source_database": "data/derived/simple_baseline_v2/model_results.sqlite",
+    "source_database_sha256": "f112323774527887686a6471296af036415e45e751416f4a2e4a3574cf16d3c4",
+    "full_parameters": "examples/small_replay/current_lr.json",
+    "full_parameters_sha256": "ce2a7350b39e8760175c390512259fc418a79db9c5340e5617205481ef6111cf",
+    "model_run_status": "reused_v1",
+    "feature_count": 16,
+    "intercept": -8.312916413119973,
+    "approval": "R0 用独立只读 SQL 从 model_runs/model_feature_map/preprocessing_stats/model_coefficients 逐字段核对；通过后复制完整参数 JSON 至 R 绑定包",
+    "payload_v2_rejected": "model_payload_v2.json 只有模型摘要和截距，不含完整系数/预处理，不能用作评分模型"
+  },
+  "dates": {
+    "quarter_raw": ["2023-10-01", "2023-12-31"],
+    "quarter_days": 92,
+    "score_start": "2023-10-01",
+    "score_end": "2023-12-24",
+    "score_days": 85,
+    "outcome_cutoff": "2023-12-31",
+    "needs_2024_data": false,
+    "history_window_days": 14,
+    "min_history_observations": 12,
+    "bridge_history_start": "2023-09-18",
+    "bridge_extra_past_state": "2023-09-17",
+    "bridge_note": "09-18—09-30 支持 10-01 窗口；可读 09-17 作额外过去状态但不得计入 10-01 窗口",
+    "event_start": "2023-10-08",
+    "event_end": "2023-12-25",
+    "event_end_rule": "event_end = eval_end + 1（12-24+1=12-25）；12-25 事件的七个候选决策日 12-18—12-24 均在评分期；12-26—12-31 事件参与逐告警结局作段外另报，不进主分母",
+    "first_failure_date_not_scored": true
+  },
+  "identity": {
+    "key": "serial_number",
+    "cross_source_model_conflict": "stop",
+    "new_devices_allowed": "达到历史门槛后进入，不要求在 Q3 出现",
+    "revival_forbidden": "Q1/Q2/Q3 已出现 failure 的设备在 Q4 不可复活"
+  },
+  "capacity": {
+    "rule": "k_t = ceil(N_t / 1000)",
+    "note": "N_t=共同合格可评分设备数；N_t=0 则 k_t=0；候选不足允许实际告警量少于 k，如实报告"
+  },
+  "cooldown": {
+    "days": 7,
+    "rule": "距上次告警日期差 <= 7 不得再次告警；10-01 告警后最早 10-09 再告警",
+    "initial_state": "两方法 10-01 均以空冷却状态启动（模拟新部署，与既有分季回放一致）；历史 failure 与观测窗口继承，不随冷却重置",
+    "tie_prefix": "drive-v1|20260912"
+  },
+  "labels": {
+    "horizon_days": 7,
+    "positive_with_gap": true,
+    "negative_observed": "没有 failure 且 t+1..t+7 七个未来日完整观测",
+    "unknown": "随访不足；保留名单资格，不能填 0",
+    "label_store_closed_during_selection": true
+  },
+  "opportunity": {
+    "definition": "观测范围 2023-01-01 起的首次公开 failure，落主事件区间且至少有一个此前 1—7 日的合格决策日",
+    "denominator_independent_of_alerts": "不依赖任何方法曾告警、冷却、排名、信号正值；两方法分母完全相同",
+    "not_fixed_to_126": true
+  },
+  "smart_rule": {
+    "fields": [5, 187, 188, 197, 198],
+    "definition": "当前 raw 正值项数；缺失不贡献正值；信号数 0 不得告警",
+    "ordering": "按信号数排序"
+  },
+  "lr_scoring": {
+    "ordering": "线性分数排序（不称校准故障概率）",
+    "feature_config": "configs/reproducible_current_v1.json",
+    "feature_config_sha256": "275ce0d764d06a56c07dd95069404d85824fb3f0ad99afb1f54b8b06e9f20e20"
+  },
+  "input_anomaly": {
+    "stop_on": ["同日重复记录", "非法类型/非有限值", "行宽/必需字段缺失", "序列/身份冲突", "容量校验失败", "同季表头结构变化", "92日缺失或重复日期", "CRC/SHA不符", "来源身份变化"],
+    "null_policy": "正常 NULL 保留；负 raw/非法 failure 拒绝",
+    "extra_official_fields": "只登记，不加入特征白名单",
+    "coverage_stop": {
+      "baseline_seed": "2023-09-24—09-30 每日主型号观测量中位数",
+      "low_day_ratio": 0.8,
+      "consecutive_days": 3,
+      "cumulative_days": 10,
+      "no_baseline": "停止比较；缺少基准不能判定通过"
+    },
+    "smart_decrease_policy": "5/9/187 下降：保留原始非负数与既有当前特征公式，逐日记录所有下降；不要求匹配 Q3 三条设备账本；不回溯删盘或填 0；当前模型无历史差分特征，变化是输入诊断不重新拟合",
+    "other_structural_errors": "停止"
+  },
+  "access_boundary": {
+    "source_builder_reads_failure": "源构建不可避免读取原始 failure，但评分消费者只取得截至 t 的字段及截至 t 的 failure 状态",
+    "consumer_forbidden": "不得查询未来首故障日期、标签或全季会否失败设备名单",
+    "role_separation": "选择库关闭、摘要封存后才打开评价结局输入；在独立结果库写评价，不修改选择库"
+  },
+  "quality_gate": {
+    "unknown_ratio_max": 0.2,
+    "action": "名单封存后评价；超限保存质量统计，标 data_quality_failed，不发布完整有效性结论；不据此重筛名单或重新评分"
+  },
+  "metrics": {
+    "primary": "Δ = recall(current_lr) − recall(smart_nonzero)，单位百分点；报告两边命中数/共同机会分母",
+    "lead_quantiles": {"method": "线性分位", "levels": [0.25, 0.5, 0.75], "scope": "仅命中事件"},
+    "alert_precision": {
+      "A": "全部告警",
+      "H": "已知命中",
+      "U": "unknown",
+      "lower": "H/A",
+      "upper": "(H+U)/A",
+      "known_outcome": "H/(A−U) 另列",
+      "null_cases": "A=0 或 A−U=0",
+      "unknown_in_denominator": true
+    },
+    "recall_nulls": "无机会 → null；有机会无命中 → 召回 0、提前量分位 null",
+    "lead_caveat": "提前量更大可能来自漏掉较难事件，不能独立证明模型更好"
+  },
+  "bootstrap": {
+    "method": "设备级有放回重抽，NumPy Generator(PCG64)",
+    "seed": 20260913,
+    "replicates": 2000,
+    "min_valid_replicates": 1900,
+    "unit": "全部至少一个合格评分日的设备按 UTF-8 serial 升序",
+    "paired": "同一次抽样索引同时用于两方法，保留完整事件标志",
+    "zero_opportunity_replicates": "不进入差值，记录数量",
+    "interval": "95% 百分位，线性 0.025/0.975 分位",
+    "direction": "current − smart；不得沿用旧 history−current 参数次序",
+    "scope_limit": "冻结名单下估计配对差值不确定性，不重排机群，不覆盖共享日历冲击"
+  },
+  "evidence_gates": {
+    "insufficient_events_below": 100,
+    "publish_requires": ["N >= 100", "有效重抽 >= 1900", "全部质量/审计门通过"],
+    "support_gain_requires_all": ["Δ >= 5 个百分点", "配对 95% 下限 > 0", "LR unknown 告警比例相对 SMART 增加 <= 2 个百分点", "N >= 100", "有效重抽 >= 1900", "完整验收通过"],
+    "unknown_ratio_gate": "unknown 比值无法计算则该门不可判定，不补 0",
+    "locked_before_results": "门槛在 Q4 结果前锁定，属项目判断标准；未满足写'未达到预设增益证据要求'，不说等效/无效；满足也不自动部署"
+  },
+  "budget": {
+    "process_rss_bytes": 3221225472,
+    "numeric_threads": 1,
+    "sampling_seconds": 0.2,
+    "retention_bytes": 12884901888,
+    "min_free_at_start_bytes": 15032385536,
+    "min_free_running_bytes": 2147483648,
+    "download": {"attempts": 1, "timeout_seconds": 1800, "max_network_body_bytes": 1395864371},
+    "unzip": {"total_bytes": 12884901888, "per_member_bytes": 268435456},
+    "real_chain_total_seconds": 10800,
+    "light_summary": {"rss_bytes": 536870912, "output_bytes": 10485760, "seconds": 120},
+    "r0_fixture": {"single_failure_seconds": 30, "suite_seconds": 180}
+  },
+  "source_zip": {
+    "url": "https://f001.backblazeb2.com/file/Backblaze-Hard-Drive-Data/data_Q4_2023.zip",
+    "content_length": 1010626705,
+    "bz_file_id": "4_zefbb636e885eab02543a061a_f2178daa903175748_d20240208_m180645_c001_v0001180_t0023_u01707415605883",
+    "content_sha1": "none",
+    "accept_ranges": "bytes",
+    "official_page": "https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data",
+    "usage": "注明 Backblaze；责任由使用者承担；可销售衍生作品，不销售原始数据",
+    "r0_metadata_budget": "至多 16MiB ZIP 尾部/目录/成员头 Range 元数据；不读成员压缩数据段；不统计 CSV 行数；服务端忽略 Range 即中止",
+    "head_checked_at": "2026-09-16"
+  },
+  "release_gate": {
+    "required_for_real_run": true,
+    "release_binds": ["r0_lock 摘要", "源对象 ID", "真实允许阶段"],
+    "missing_or_expired_or_changed": "拒绝，不默默接受新版",
+    "r0_has_no_release": "R0 阶段真实 run 必须拒绝"
+  },
+  "paths": {
+    "raw": "data/raw/r_validation_v1/attempt_001/",
+    "derived": "data/derived/r_validation_v1/attempt_001/",
+    "evidence": "evidence/r_validation_v1/attempt_001/",
+    "fixtures": "evidence/r_validation_v1/fixtures/<新attempt>/"
+  }
+}

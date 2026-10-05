@@ -1,0 +1,41 @@
+name: Deploy dashboard to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Prepare static dashboard
+        run: |
+          mkdir -p _site/dashboard
+          cp -R dashboard/signal_v1 _site/dashboard/
+          mkdir -p _site/dashboard/vendor
+          cp -R dashboard/vendor/tabler _site/dashboard/vendor/
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          p = Path('_site/dashboard/signal_v1/index.html')
+          html = p.read_text()
+          html = html.replace('../../reports/', 'https://github.com/Yemyu/drive-failure-warning/blob/main/reports/')
+          p.write_text(html)
+          Path('_site/index.html').write_text('<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=dashboard/signal_v1/#task"><title>Drive Signal</title><a href="dashboard/signal_v1/#task">打开 Drive Signal 看板</a></html>')
+          PYTHON
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

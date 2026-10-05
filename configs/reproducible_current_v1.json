@@ -1,0 +1,73 @@
+{
+  "version": "repro-current-v1",
+  "profile": "backblaze_2023_st4000dm000",
+  "task": {
+    "model": "ST4000DM000",
+    "horizon_days": 7,
+    "history_days": 14,
+    "min_history": 12,
+    "event": "first_observed_failure",
+    "unknown_policy": "exclude_from_fit_keep_in_scoring",
+    "positive_with_gap": "include",
+    "smart_decline": "retain_raw_values_audit_as_of"
+  },
+  "dates": {
+    "train_start": "2023-01-15",
+    "train_end": "2023-06-23",
+    "train_cutoff": "2023-06-30",
+    "train_event_start": "2023-01-22",
+    "train_event_end": "2023-06-24",
+    "eval_start": "2023-07-01",
+    "eval_end": "2023-09-23",
+    "eval_cutoff": "2023-09-30",
+    "event_start": "2023-07-08",
+    "event_end": "2023-09-24"
+  },
+  "features": [
+    "smart_5_current_log1p", "smart_5_current_missing", "smart_5_current_nonzero",
+    "smart_9_current_log1p", "smart_9_current_missing",
+    "smart_187_current_log1p", "smart_187_current_missing", "smart_187_current_nonzero",
+    "smart_188_current_nonzero", "smart_188_current_missing",
+    "smart_197_current_log1p", "smart_197_current_missing", "smart_197_current_nonzero",
+    "smart_198_current_log1p", "smart_198_current_missing", "smart_198_current_nonzero"
+  ],
+  "sampling": {
+    "negative_divisor": 20,
+    "negative_minimum_if_nonempty": 1,
+    "all_positives": true,
+    "sha256_prefix": "fit-v1|20260913",
+    "weights": "inverse_probability_normalized_mean_one"
+  },
+  "preprocessing": {
+    "fit_population": "weighted_training_sample",
+    "imputation": "weighted_observed_mean",
+    "all_missing_mean": 0.0,
+    "variance": "weighted_population",
+    "minimum_scale": 1e-12,
+    "fallback_scale": 1.0,
+    "dtype": "float64"
+  },
+  "estimator": {
+    "model": "current_lr", "penalty": "l2", "solver": "lbfgs",
+    "C": 1.0, "tol": 1e-6, "max_iter": 1000,
+    "fit_intercept": true, "class_weight": null, "random_state": 20260913
+  },
+  "selection": {
+    "methods": ["current_lr", "smart_nonzero"],
+    "budget_denominator": 1000, "cooldown_days": 7,
+    "tie_prefix": "drive-v1|20260912",
+    "reset_cooldown_at_eval_start": true,
+    "rule_requires_positive_signal": true
+  },
+  "limits": {
+    "max_rss_bytes": 3221225472,
+    "max_output_bytes": 12884901888,
+    "initial_free_bytes": 15032385536,
+    "min_free_bytes": 2147483648,
+    "max_elapsed_seconds": 10800,
+    "fit_timeout_seconds": 900,
+    "poll_seconds": 0.2,
+    "numerical_threads": 1
+  },
+  "comparison": {"abs_tol": 1e-12, "rel_tol": 1e-10, "keys_and_nulls": "exact"}
+}
